@@ -13,4 +13,4 @@ jobs:
       - name: Run command via SSH
         run: |
           export SSHPASS=segfault
-          sshpass -e ssh -o "SetEnv SECRET=$SECRET" root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
+          echo "segfault" | ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
