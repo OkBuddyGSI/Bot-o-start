@@ -12,5 +12,5 @@ jobs:
         run: |
           sudo apt update
           sudo apt install tmux -y
-          tmux new-session -s ghactions -d 'bash -c "ssh -o \"SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}\" root@lulz.segfault.net \"cd dumper_bot && ./start.sh --restart\"; exec bash"'
-          tmux send-keys -t ghactions 'yes' Enter 'segfault' Enter
+          tmux new-session -d 'ssh -o "SetEnv SECRET=${secrets.SEGFAULT_TOKEN}" root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart\";'
+          tmux send-keys -t 0 "yes" Enter 'segfault' Enter
