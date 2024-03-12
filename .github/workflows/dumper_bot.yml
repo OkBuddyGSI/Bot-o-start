@@ -13,6 +13,6 @@ jobs:
           sudo apt update
           sudo apt install tmux -y
           tmux new-session -d -s ghactions 
-          tmux send-keys -t ghactions 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net #bot added to ~/.zshrc' Enter 'segfault'
+          tmux send-keys -t ghactions 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"' Enter 'segfault'
           
 
