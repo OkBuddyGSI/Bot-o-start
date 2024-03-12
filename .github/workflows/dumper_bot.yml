@@ -10,14 +10,9 @@ jobs:
     steps:
       - name: Run command via SSH
         run: |
-          sudo apt update 
-          sudo apt install expect -y
-          expect -c "
-          spawn ssh -o 'SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}' root@lulz.segfault.net #bot added to ~/.zshrc
-          expect {
-            \"*password:*\" {
-              send -- \"segfault\r\"
-              exp_continue
-          }
-          eof
-          }"
+          sudo apt update
+          sudo apt install tmux -y
+          tmux new-session -d -s ghactions 
+          tmux send-keys -t ghactions 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net #bot added to ~/.zshrc' Enter 'segfault'
+          
+
