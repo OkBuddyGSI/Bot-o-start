@@ -7,16 +7,13 @@ on:
 jobs:
   run-command:
     runs-on: ubuntu-latest
-    env:
-      SECRET: ${{ secrets.SEGFAULT_TOKEN }}
     steps:
       - name: Run command via SSH
         run: |
           sudo apt update 
           sudo apt install expect -y
-          export SSHPASS=segfault
           expect -c "
-          spawn ssh -o 'SetEnv SECRET $env(SEGFAULT_TOKEN)' root@lulz.segfault.net #bot added to ~/.zshrc
+          spawn ssh -o 'SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}' root@lulz.segfault.net #bot added to ~/.zshrc
           expect {
             \"*password:*\" {
               send -- \"segfault\r\"
