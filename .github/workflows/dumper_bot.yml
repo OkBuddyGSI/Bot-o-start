@@ -13,4 +13,12 @@ jobs:
       - name: Run command via SSH
         run: |
           export SSHPASS=segfault
-          echo "segfault" | ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
+          expect -c "
+          spawn ssh -o 'SetEnv SECRET $env(SEGFAULT_TOKEN)' root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
+          expect {
+            \"*password:*\" {
+              send -- \"segfault\r\"
+              exp_continue
+          }
+          eof
+          }"
