@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Run command via SSH
         run: |
+          sudo apt update 
+          sudo apt install expect -y
           export SSHPASS=segfault
           expect -c "
           spawn ssh -o 'SetEnv SECRET $env(SEGFAULT_TOKEN)' root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
