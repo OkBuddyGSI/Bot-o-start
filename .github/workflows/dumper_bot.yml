@@ -16,7 +16,7 @@ jobs:
           sudo apt install expect -y
           export SSHPASS=segfault
           expect -c "
-          spawn ssh -o 'SetEnv SECRET $env(SEGFAULT_TOKEN)' root@lulz.segfault.net "cd dumper_bot && ./start.sh --restart"
+          spawn ssh -o 'SetEnv SECRET $env(SEGFAULT_TOKEN)' root@lulz.segfault.net #bot added to ~/.zshrc
           expect {
             \"*password:*\" {
               send -- \"segfault\r\"
