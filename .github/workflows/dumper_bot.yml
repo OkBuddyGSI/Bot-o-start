@@ -12,7 +12,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install tmux -y
+          cat >~/.ssh/id_sf-lulz-segfault-net ${{ secrets.id_sf }}
+          cat >>~/.ssh/config ${{ secrets.config }}
           tmux new-session -d || tmux
-          tmux new-session -d 'ssh -o "SetEnv SECRET=moVZlCnAzdLKoqtRWiXomjJi" root@lulz.segfault.net'
+          tmux new-session -d 'ssh usagechaos'
           tmux send-keys -t 0 "yes" Enter 'segfault'
           tmux send-keys -t 0 "N"
