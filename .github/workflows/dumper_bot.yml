@@ -13,8 +13,8 @@ jobs:
           sudo apt update
           sudo apt install tmux -y
           mkdir /home/runner/.ssh || true
-          cat >~/.ssh/id_sf-lulz-segfault-net ${{ secrets.id_sf }}
-          cat >>~/.ssh/config ${{ secrets.config }}
-          chmod 600 ~/.ssh/config ~/.ssh/id_sf-lulz-segfault-net
-          ssh -T usagechaos
+          tmux new-session -d || tmux
+          tmux send-keys -t 0 'ssh usagechaos' Enter
+          tmux send-keys -t 0 "yes" Enter 'segfault' Enter
+          tmux send-keys -t 0 "N"
           sleep 5
