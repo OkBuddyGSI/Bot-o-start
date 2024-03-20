@@ -1,3 +1,5 @@
+#!/bin/bash
+
 SEGFAULT_TOKEN=$1
 
 sudo apt update
