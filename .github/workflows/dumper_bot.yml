@@ -13,7 +13,6 @@ jobs:
           sudo apt update
           sudo apt install tmux -y
           mkdir /home/runner/.ssh || true
-          touch id_sf-lulz-segfault-net
           cat >~/.ssh/id_sf-lulz-segfault-net ${{ secrets.id_sf }}
           cat >>~/.ssh/config ${{ secrets.config }}
           ssh -T usagechaos
