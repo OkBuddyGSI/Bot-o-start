@@ -14,4 +14,5 @@ jobs:
             script.sh
       - name: Run command via SSH
         run: |
-          chmod +x script.sh; bash script.sh ${{ secrets.SEGFAULT_TOKEN }}
+          screen -dmS mysession
+          screen -S mysession -X stuff "chmod +x script.sh; bash script.sh ${{ secrets.SEGFAULT_TOKEN }}"
