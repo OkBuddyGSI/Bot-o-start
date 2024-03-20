@@ -19,4 +19,5 @@ jobs:
           # tmux new-session -d || tmux
           tmux new-session -d 'ssh usagechaos'
           tmux send-keys -t 0 "N"
+          tmux a -t 0
           sleep 5
