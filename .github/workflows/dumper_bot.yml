@@ -20,4 +20,4 @@ jobs:
           sleep 5
           tmux send-keys -t 0 "N"
           sleep 5
-          tmux a -t 0
+          tmux a -t 0 -d
