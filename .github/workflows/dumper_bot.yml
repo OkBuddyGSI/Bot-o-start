@@ -14,7 +14,7 @@ jobs:
           sudo apt install tmux -y
           mkdir /home/runner/.ssh || true
           tmux new-session -d || tmux
-          tmux send-keys -t 0 'ssh usagechaos' Enter
+          tmux send-keys -t 0 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net' Enter
           tmux send-keys -t 0 "yes" Enter 'segfault' Enter
           tmux send-keys -t 0 "N"
           sleep 5
