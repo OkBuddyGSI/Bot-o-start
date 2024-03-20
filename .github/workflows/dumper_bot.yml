@@ -15,6 +15,9 @@ jobs:
           mkdir /home/runner/.ssh || true
           tmux new-session -d || tmux
           tmux send-keys -t 0 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net' Enter
-          tmux send-keys -t 0 "yes" Enter 'segfault' Enter
+          sleep 5
+          tmux send-keys -t 0 'segfault' Enter
+          sleep 5
           tmux send-keys -t 0 "N"
           sleep 5
+          tmux a -t 0
