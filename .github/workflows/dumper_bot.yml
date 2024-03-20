@@ -18,6 +18,7 @@ jobs:
           cat >>~/.ssh/config ${{ secrets.config }}
           chmod 600 ~/.ssh/config ~/.ssh/id_sf-lulz-segfault-net
           # tmux new-session -d || tmux
+          pkill -f tmux
           tmux new-session -d 'ssh usagechaos'
           tmux send-keys -t 0 "N"
           tmux a -t 0
