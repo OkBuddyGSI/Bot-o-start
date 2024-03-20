@@ -8,16 +8,10 @@ jobs:
   run-command:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            script.sh
       - name: Run command via SSH
         run: |
-          sudo apt update
-          sudo apt install tmux -y
-          mkdir /home/runner/.ssh || true
-          tmux new-session -d || tmux
-          tmux send-keys -t 0 'ssh -o "SetEnv SECRET=${{ secrets.SEGFAULT_TOKEN }}" root@lulz.segfault.net' Enter
-          sleep 5
-          tmux send-keys -t 0 'segfault' Enter
-          sleep 5
-          tmux send-keys -t 0 "N"
-          sleep 5
-          tmux a -t 0 -d
+          chmod +x script.sh; bash script.sh ${{ secrets.SEGFAULT_TOKEN }}
