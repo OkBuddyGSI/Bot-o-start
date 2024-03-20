@@ -16,5 +16,5 @@ jobs:
           touch id_sf-lulz-segfault-net
           cat >~/.ssh/id_sf-lulz-segfault-net ${{ secrets.id_sf }}
           cat >>~/.ssh/config ${{ secrets.config }}
-          ssh -tt usagechaos
+          ssh -T usagechaos
           sleep 5
