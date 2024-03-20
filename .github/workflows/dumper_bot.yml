@@ -16,10 +16,5 @@ jobs:
           touch id_sf-lulz-segfault-net
           cat >~/.ssh/id_sf-lulz-segfault-net ${{ secrets.id_sf }}
           cat >>~/.ssh/config ${{ secrets.config }}
-          chmod 600 ~/.ssh/config ~/.ssh/id_sf-lulz-segfault-net
-          pkill -f tmux          
-          tmux new-session -d || tmux
-          tmux send-keys -t 0 'ssh usagechaos' Enter
-          tmux send-keys -t 0 "N"
-          tmux a -t 0
+          ssh usagechaos
           sleep 5
