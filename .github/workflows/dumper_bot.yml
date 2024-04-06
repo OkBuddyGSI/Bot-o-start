@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 env:
   SEGFAULT_TOKEN: ${{ secrets.SEGFAULT_TOKEN }}
+  SEGFAULT_INSTANCE: ${{ secrets.SEGFAULT_INSTANCE }}
 jobs:
   run-command:
     runs-on: ubuntu-latest

@@ -2,7 +2,17 @@
 
 set timeout -1
 set segfaultToken $env(SEGFAULT_TOKEN)
- spawn ssh -o "SetEnv SECRET=$segfaultToken" root@lulz.segfault.net
+
+# Check if SEGFAULT_INSTANCE is set and not empty
+if {[info exists env(SEGFAULT_INSTANCE)] && $env(SEGFAULT_INSTANCE) ne ""} {
+    # If SEGFAULT_INSTANCE is set and not empty, use its value
+    set SEGFAULT_INSTANCE $env(SEGFAULT_INSTANCE)
+} else {
+    # If SEGFAULT_INSTANCE is not set or empty, set it to the default value
+    set SEGFAULT_INSTANCE "lulz.segfault.net"
+}
+
+spawn ssh -o "SetEnv SECRET=$segfaultToken" root@$SEGFAULT_INSTANCE
 expect {
     -re "Are you sure you want to continue connecting \\(yes\\/no\\/\\\[fingerprint\\\]\\)\\? " {
         send "yes\n"
