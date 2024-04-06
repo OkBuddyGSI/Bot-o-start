@@ -1,8 +1,8 @@
 #!/usr/bin/expect -f
 
 set timeout -1
-
- spawn ssh -o "SetEnv SECRET=$SEGFAULT_TOKEN" root@lulz.segfault.net
+set segfaultToken $env(SEGFAULT_TOKEN)
+ spawn ssh -o "SetEnv SECRET=$segfaultToken" root@lulz.segfault.net
 expect {
     -re "Are you sure you want to continue connecting \\(yes\\/no\\/\\\[fingerprint\\\]\\)\\? " {
         send "yes\n"
