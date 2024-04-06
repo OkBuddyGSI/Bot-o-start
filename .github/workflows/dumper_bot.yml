@@ -1,7 +1,7 @@
 name: Run command via SSH every day or on workflow dispatch
 on:
   schedule:
-    - cron: '0 0 * * *' # runs at 12:00 AM UTC every day
+    - cron: '0 */3 * * *' # runs every 3 hours
   workflow_dispatch:
 env:
   SEGFAULT_TOKEN: ${{ secrets.SEGFAULT_TOKEN }}
