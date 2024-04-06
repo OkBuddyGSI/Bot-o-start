@@ -12,7 +12,9 @@ jobs:
         with:
           sparse-checkout: |
             script.sh
-      - name: Run command via SSH
+      - name: Reboot Server
         run: |
-          screen -dmS mysession
-          screen -S mysession -X stuff "chmod +x script.sh; bash script.sh ${{ secrets.SEGFAULT_TOKEN }}"
+          bash restart.sh ${{ secrets.SEGFAULT_TOKEN }}
+      - name: Start Server
+        run: |
+          bash script.sh ${{ secrets.SEGFAULT_TOKEN }}
