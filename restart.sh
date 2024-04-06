@@ -2,8 +2,6 @@
 
 set timeout -1
 
-SEGFAULT_TOKEN=$1
-
  spawn ssh -o "SetEnv SECRET=$SEGFAULT_TOKEN" root@lulz.segfault.net
 expect {
     -re "Are you sure you want to continue connecting \\(yes\\/no\\/\\\[fingerprint\\\]\\)\\? " {
