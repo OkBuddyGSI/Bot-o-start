@@ -24,4 +24,4 @@ expect {
     }
     eof
 }
-# credit to Pugzarecute for script
+# credit to PugzAreCute for script
