@@ -12,12 +12,8 @@ if {[info exists env(SEGFAULT_INSTANCE)] && $env(SEGFAULT_INSTANCE) ne ""} {
     set SEGFAULT_INSTANCE "lulz.segfault.net"
 }
 
-spawn ssh -o "SetEnv SECRET=$segfaultToken" root@$SEGFAULT_INSTANCE
+spawn ssh -o "SetEnv SECRET=$segfaultToken" root@$SEGFAULT_INSTANCE -o StrictHostKeyChecking=accept-new
 expect {
-    -re "Are you sure you want to continue connecting \\(yes\\/no\\/\\\[fingerprint\\\]\\)\\? " {
-        send "yes\n"
-        exp_continue
-    }
     "root@lulz.segfault.net's password: " {
         send "segfault\n"
         exp_continue
