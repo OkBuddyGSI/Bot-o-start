@@ -31,3 +31,5 @@ expect {
     eof
 }
 # credit to PugzAreCute for script
+
+exit 0
